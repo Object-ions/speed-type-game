@@ -7,7 +7,7 @@ const endGameEl = document.getElementById('end-game-container');
 const settingsBtn = document.getElementById('settings-btn');
 const settings = document.getElementById('settings');
 const settingsForm = document.getElementById('settings-form');
-const difficultySelect = document.getElementById('difficulty');
+let difficultySelect = document.getElementById('difficulty');
 
 const wordsArr = [
   'sigh',
@@ -41,8 +41,11 @@ let score = 0;
 //Init time
 let time = 10;
 
-//Init difficulty
-let difficulty = 'medium';
+//Set difficulty to value in local storage or  'medium'
+let difficulty = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'medium';
+
+//Set difficulty select value
+difficultySelect.value = localStorage.getItem('difficulty') !== null ? localStorage.getItem('difficulty') : 'medium';
 
 //Focus on text on start
 text.focus();
