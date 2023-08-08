@@ -32,17 +32,21 @@ const wordsArr = [
   'loving'
 ];
 
-//Init word
-let randomWord;
-
 //Init score
 let score;
 
 //Init time
 let time = 10;
 
+//Generate random word from array
 function getRandomWord() {
   return wordsArr[Math.floor(Math.random() * wordsArr.length)];
 }
 
-console.log(getRandomWord());
+//Add word to DOM
+function addWordToDOM() {
+  let randomWord = getRandomWord();
+  word.innerText = randomWord
+}
+
+addWordToDOM();
