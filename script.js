@@ -32,8 +32,11 @@ const wordsArr = [
   'loving'
 ];
 
+//Init randomWord
+let randomWord;
+
 //Init score
-let score;
+let score = 0;
 
 //Init time
 let time = 10;
@@ -45,8 +48,26 @@ function getRandomWord() {
 
 //Add word to DOM
 function addWordToDOM() {
-  let randomWord = getRandomWord();
+  randomWord = getRandomWord();
   word.innerText = randomWord
 }
 
+//Update score
+function updateScore() {
+  score++;
+  scoreEl.innerHTML = score
+}
+
 addWordToDOM();
+
+//Event listeners
+text.addEventListener('input', e => {
+  const insertedText = e.target.value;
+  if (insertedText === randomWord) {
+    addWordToDOM();
+    updateScore();
+
+    //Clear
+    e.target.value = '';
+  }
+} )
