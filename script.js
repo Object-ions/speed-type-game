@@ -84,13 +84,12 @@ function gameOver() {
   <button onclick="window.location.reload()"> Reload </button>
   `;
 
-  endGameEl.style.display = 'flex'
+  endGameEl.style.display = 'flex';
 }
 
 addWordToDOM();
 
-//Event listeners
-text.addEventListener('input', e => {
+function textInputEvent(e) {
   const insertedText = e.target.value;
   if (insertedText === randomWord) {
     addWordToDOM();
@@ -98,5 +97,18 @@ text.addEventListener('input', e => {
 
     //Clear
     e.target.value = '';
+
+    //Add time for when user hit the word
+    time += 5
+
+    updateTime();
   }
-} )
+}
+
+//Event listeners
+
+//Typing
+text.addEventListener('input', textInputEvent);
+
+//Settings btn click
+settingsBtn.addEventListener('click', () => settings.classList.toggle('hide'))
